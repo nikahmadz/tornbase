@@ -1,0 +1,36 @@
+hr
+section
+	._(v-if=" db.user_bars ")
+		._error(v-if=" db.user_bars.error ")
+			._message._tag
+				span(v-html=" getErrorMessage('T-13',db.user_bars.error) ") 
+				button._a(@click="loadData('user_bars')") Reload
+		._(v-else)
+			.t-reload
+				button._a(@click="loadData('user_bars')") Reload
+			.t-user-bars
+				p
+					span.t-label Life: 
+					span.t-value {{ db.user_bars.life.current }} / {{ db.user_bars.life.maximum }}  [ + {{ db.user_bars.life.increment }} ]
+				p
+					span.t-label Energy: 
+					span.t-value {{ db.user_bars.energy.current }} / {{ db.user_bars.energy.maximum }}  [ + {{ db.user_bars.energy.increment }} ]
+				p
+					span.t-label Nerve: 
+					span.t-value {{ db.user_bars.nerve.current }} / {{ db.user_bars.nerve.maximum }}  [ + {{ db.user_bars.nerve.increment }} ]
+				p
+					span.t-label Happy: 
+					span.t-value {{ db.user_bars.happy.current }} / {{ db.user_bars.happy.maximum }}  [ + {{ db.user_bars.happy.increment }} ]
+				p
+					span.t-label Chain: 
+					span.t-value {{ db.user_bars.chain.current }} / {{ db.user_bars.chain.maximum }}  [ &times; {{ db.user_bars.chain.modifier }} ]
+	.t-notLoaded(v-else)
+		.t-user-bars(v-if=" db.user ")
+			._(v-if=" db.user.life ")
+				p
+					span.t-label Life: 
+					span.t-value {{ db.user.life.current }} / {{ db.user.life.maximum }}  [ + {{ db.user.life.increment }} ]
+				hr
+		p
+			button._a(@click="loadData('user_bars')") Show Status
+//-user_bars-section

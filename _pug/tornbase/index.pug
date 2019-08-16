@@ -1,0 +1,209 @@
+// index.pug, compress:true, out: ../../tornbase/index.html
+
+doctype html
+
+include ../a-first/pugs/copyright.pug
+
+html#page-index.page-index(lang="en")
+
+	head
+		meta(charset="utf-8")
+
+		// seo
+		title Tornbase
+		meta(name="description" content="Tornbase - Torn City API Reader")
+		link(rel="canonical" href="")
+
+		meta(property="og:locale" content="en_US")
+		meta(property="og:site_name" content="Tornbase")
+		meta(property="og:title" content="Tornbase")
+		meta(property="og:description" content="Tornbase - Torn City API Reader")
+		meta(property="og:url" content="")
+
+		script(type="application/ld+json").
+			{
+			"@type":"WebSite",
+			"name":"Tornbase",
+			"headline":"Tornbase",
+			"description":"Tornbase - Torn City API Reader",
+			"url":"",
+			"author":"Nik Ahmad",
+			"publisher":"Nik Ahmad",
+			"image":null,
+			"sameAs":null,
+			"dateModified":null,
+			"datePublished":null,
+			"mainEntityOfPage":null,
+			"@context":"http://schema.org"
+			}
+		// end seo
+
+		// ux
+		include ../a-first/pugs/ux.pug
+
+		// local styles
+		style#page-style(type="text/css").
+
+			input:-webkit-autofill{-webkit-transition-delay:9999s}
+
+			hr{
+				border:0;
+				border-top:1px solid #ddd;
+				border-bottom:1px solid #fff;
+				}
+
+			.t-layout{margin:3% auto;max-width:300px;padding:0 10px}
+			.t-layout ._main-menu{margin-bottom:10px}
+			.t-layout ._main-menu hr{margin-top:10px}
+			.t-layout footer{margin-top:10px}
+			.t-layout footer hr{margin-bottom:10px}
+			
+			.page-key-password:-webkit-autofill,
+			.page-key-password{
+				margin:6px 0;
+				background:transparent;
+				border:0;
+				border-bottom:1px solid #0009;
+				padding:4px;
+				margin-right:10px;
+				}
+			.page-key-password:-webkit-autofill:focus,
+			.page-key-password:focus{outline:none;border-bottom-color:#1976d2;color:#1976d2;caret-color:#1976d2;-webkit-text-fill-color:#1976d2}
+
+			.t-card{
+				background:#fff;
+				border-radius:4px;
+				box-shadow:0 0 10px #3333;
+				padding:1em;
+				width:250px;
+				margin:20% auto;
+				}
+			._error .t-card{padding:2em 3em}
+			._error .t-card ._actions{margin-left:0;margin-right:0;margin-bottom:0}
+			.t-keyDialog {padding-left:3em}
+			.t-page ._actions{margin-left:0;margin-right:0}
+			.t-notLoaded button._a{display: inline-block;padding: 2px 5px}
+			.t-caps {text-transform:capitalize}
+			.t-reload{float:right}
+			.t-reload ._a{color:#999;text-decoration:none}
+			.t-credit {color:#999}
+			.t-user-moneys .t-item{margin:2px 0}
+			.t-label{display:inline-block;float:left}
+			.t-value{display:inline-block;text-align:right;font-weight:bold}
+			.t-user-bars .t-label{width:50px}
+			.t-user-bars .t-value{width:150px}
+			.t-user-moneys .t-label{width:100px}
+			.t-user-moneys .t-value{width:100px}
+			.t-noty button{border:1px solid #ccc;border-radius:4px;background:none;padding: 2px 4px;}
+
+		//-style
+
+	//-head
+	body.t-scrollbar
+
+		// uxe
+		include ../a-first/pugs/uxe.pug
+
+		#_view._view(hidden)
+			.t-layout
+				#v-app.v-app
+
+					.v-state(v-if="stateIs('keyDialog')")
+						section.t-card._fadein.t-keyDialog
+							div
+								p
+									br
+									strong You need a key to access Tornbase.
+							div
+								input#page-key-password.page-key-password(
+									type='text'
+									name='key'
+									placeholder="API Key"
+									spellcheck='false'
+									)
+								button(
+									xs4 small color="primary"
+									@click="keyDialog_submitKey('page-key-password')"
+									) Enter
+							div
+								p
+									br
+									| Don't have the key? Get it <a href='//www.torn.com/preferences.php#tab=api' target='_blank'>here</a>.
+									br 
+									br 
+						//-card
+					//-state
+
+					.v-state._error(v-else-if="stateIs('invalidKey')")
+						section.t-card._fadein
+							._message._tag
+								b Wrong key
+							._actions
+								a._a(@click="restart()") Try again
+						//-card
+					//-state
+
+					.v-state(v-else)
+
+						nav._main-menu._fadein
+							b
+								button._a(@click="restart()") Exit
+								| 
+								button._a(@click="href('//torn.com','_blank')" title="Go to Torn City") Torn City
+							hr
+						//-nav
+
+						main
+							article
+
+								.v-state._fadein(v-if="stateIs('index')")
+									.t-page(v-if=" db " :key=" db_timestamp ")
+
+										include pugs/user_noty.pug
+										include pugs/user.pug
+										include pugs/user_bars.pug
+										include pugs/user_money.pug
+
+									.t-page(v-else)
+										section._spin
+											._spinner
+											._fadein._delay-2
+												._message
+													b Loading...
+													br
+													| Please wait.
+									//-db
+								//-state
+
+								.v-state._fadein(v-if="stateIs('test')")
+									.t-page
+										section
+											h3._h5 Testing
+										section._actions
+											a._a(@click="useState('index')") Return Home
+									//-page
+								//-state
+
+							//-article
+						//-main
+						footer._fadein
+						hr
+						p.t-credit &copy; Copyright
+						//-footer
+					//-state
+				//-app
+			//-layout
+		//-view
+
+		// core scripts execute first
+		script(src='/a-first/js/base.js')
+		//- all core scripts must be embeded inline
+			script#_base: include ../../a-first/js/base.js
+
+		// async scripts execute when loaded
+		script(async src='/a-first/js/load.js')
+		script(async src='/tornbase/js/tornbase-app.js')
+		//-script
+
+	//-body
+//-html

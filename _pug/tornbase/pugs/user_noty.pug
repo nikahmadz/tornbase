@@ -1,0 +1,15 @@
+section.t-user-noty
+	._(v-if=" db.user_noty ")
+		._error(v-if=" db.user_noty.error ")
+			._message._tag
+				span(v-html=" getErrorMessage('T-11',db.user_noty.error) ") 
+				button._a(@click="loadData('user_noty')") Reload
+		._(v-else)
+			.t-reload
+				button._a(@click="loadData('user_noty')") Reload
+			.t-noty
+				p(v-html=" getNotification(db.user_noty) ")
+	.t-notLoaded(v-else)
+		p
+			button._a(@click="loadData('user_noty')") Show Notification
+//-user-money

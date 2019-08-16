@@ -1,0 +1,52 @@
+// 404.pug, compress:true, out: ../../a-first/404.html
+
+doctype html
+
+include pugs/copyright.pug
+
+html#page-404.page-404(lang="en")
+
+	head
+		meta(charset="utf-8")
+
+		// seo
+		title 404 - Page not found
+
+		// ux
+		include pugs/ux.pug
+
+		// local styles
+		style#page-style(type="text/css").
+
+
+
+		//-style
+
+	//-head
+	body
+		._view._error
+			._layout
+
+				// nav
+				include pugs/nav.pug
+
+				main._fadein
+					article
+
+						section
+							._message._tag
+								b 404
+								|  | Page not found
+						section._actions
+							a(href='./') Return Home
+
+					//-article
+				//-main
+				
+				footer
+				//-footer
+				
+			//-layout
+		//-view
+	//-body
+//-html

@@ -1,0 +1,108 @@
+/* theme styles - (c) Copyright HtmlBase by Nik Ahmad 2019 */
+
+html{overflow:auto!important}
+
+.b-loading{
+  background:#212121cc;
+  border-radius:50%;
+  height:152px;
+  position:relative;
+  width:152px;
+}
+
+.b-loading-spinner{
+  display: inline-flex;
+  height:132px;
+  left:10px;
+  position: relative;
+  top:10px;
+  vertical-align: middle;
+  width:132px;
+}
+
+.b-loading-text{font-weight:500;color:#ddd}
+
+.a-view{
+  border:0;
+  font-family:Roboto,sans-serif;
+  line-height:1.5;
+  margin:0;
+}
+
+.a-layout {max-width:none}
+
+.a-scrollbar {
+	overflow:auto;
+}
+
+.a-scrollbar-x {
+	overflow-x:scroll;
+	overflow-y:auto;
+}
+
+.a-scrollbar-y {
+	overflow-x:auto;
+	overflow-y:scroll;
+}
+
+.a-scrollbar-xy {
+	overflow:scroll;
+}
+
+.a-no-scrollbar-x {
+	overflow-x:hidden;
+}
+
+.a-no-scrollbar-y {
+	overflow-y:hidden;
+}
+
+.a-no-scrollbar {
+	overflow:hidden;
+}
+
+.a-scrollbar::-webkit-scrollbar {
+	width:10px;
+	height:10px;
+}
+
+.a-scrollbar::-webkit-scrollbar-corner,
+.a-scrollbar::-webkit-scrollbar-track {
+	background-color:#eee;
+}
+
+.a-scrollbar::-webkit-scrollbar-track {
+	border:1px solid #ccc;
+	box-shadow:inset 0 0 5px #ccc;
+}
+
+.a-scrollbar::-webkit-scrollbar-thumb {
+	border-style:solid;
+	border-color:#ccc;
+	background:#666;
+}
+
+.a-scrollbar::-webkit-scrollbar-thumb:vertical {
+	border-width:0 2px;
+}
+
+.a-scrollbar::-webkit-scrollbar-thumb:horizontal {
+	border-width:2px 0;
+}
+
+.a-scrollbar:hover::-webkit-scrollbar-thumb,
+.a-scrollbar::-webkit-scrollbar-thumb:hover {
+	border:0;
+}
+
+.a-content{font-size:14px}
+
+.page-notification .v-btn {
+  margin:0;
+  min-width:auto;
+  padding:6px;
+}
+
+.page-notification .v-btn .v-icon {
+  margin-left:6px;
+}

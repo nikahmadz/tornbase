@@ -1,0 +1,52 @@
+hr
+section.t-user
+	._(v-if=" db.user ")
+		._error(v-if=" db.user.error ")
+			._message._tag
+				span(v-html=" getErrorMessage('T-12',db.user.error) ") 
+				button._a(@click="loadData('user')") Reload
+		._(v-else)
+			.t-reload
+				button._a(@click="loadData('user')") Reload
+			._
+				p
+					strong {{ db.user.name }} 
+					| [ 
+					button._a(
+						@click="href('//torn.com/profiles.php?XID=' + db.user.player_id,'_blank')"
+						) {{ db.user.player_id }}
+					|  ] 
+					span.page-user-donator(v-if="db.user.donator") [DONATOR]
+			._
+				hr
+				p {{ db.user.gender }} {{ db.user.role }}, age {{ db.user.age }}.
+					br
+					span.t-caps {{ db.user.rank }} 
+						| [ Level {{ db.user.level }} ]
+					br
+					| Lives in a {{ db.user.property }} [ 
+					button._a(
+						@click="href('//torn.com/properties.php#/ID=' + db.user.property_id,'_blank')"
+						) {{ db.user.property_id }}
+					|  ]
+					br
+					span Has {{ db.user.awards }} awards.
+			hr
+			p._(v-if=" db.user.status ")
+				| Currently {{ db.user.status[0] }} 
+				span._(v-if=" db.user.states ")
+					span.page-user-hospital(
+						v-if=" db.user.states.hospital_timestamp "
+						:title=" db.user.states.hospital_timestamp "
+						) [ Hospitalized ]
+					span.page-user-jail(
+						v-if=" db.user.states.jail_timestamp "
+						:title=" db.user.states.jail_timestamp "
+						) [ Jailed ]
+				br
+				| Last active 
+				span(:title=" db.user.last_action.timestamp ") {{ db.user.last_action.relative }}
+	.t-notLoaded(v-else)
+		p
+			button._a(@click="loadData('user')") Show Profile
+//-user-section

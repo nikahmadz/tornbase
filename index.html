@@ -1,0 +1,68 @@
+<!DOCTYPE html><!--
+(c) Copyright HtmlBase by Nik Ahmad 2019 
+--><html class="page-index" id="page-index" lang="en"><head><meta charset="utf-8"><title>Tornbase</title><meta name="description" content="Tornbase - Torn City API Reader"><link rel="canonical" href=""><meta property="og:locale" content="en_US"><meta property="og:site_name" content="Tornbase"><meta property="og:title" content="Tornbase"><meta property="og:description" content="Tornbase - Torn City API Reader"><meta property="og:url" content=""><script type="application/ld+json">{
+"@type":"WebSite",
+"name":"Tornbase",
+"headline":"Tornbase",
+"description":"Tornbase - Torn City API Reader",
+"url":"",
+"author":"Nik Ahmad",
+"publisher":"Nik Ahmad",
+"image":null,
+"sameAs":null,
+"dateModified":null,
+"datePublished":null,
+"mainEntityOfPage":null,
+"@context":"http://schema.org"
+}</script><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" media="all" href="/a-first/css/base.css"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="manifest" href="/site.webmanifest"><style id="page-style" type="text/css">input:-webkit-autofill{-webkit-transition-delay:9999s}
+
+hr{
+	border:0;
+	border-top:1px solid #ddd;
+	border-bottom:1px solid #fff;
+	}
+
+.t-layout{margin:3% auto;max-width:300px;padding:0 10px}
+.t-layout ._main-menu{margin-bottom:10px}
+.t-layout ._main-menu hr{margin-top:10px}
+.t-layout footer{margin-top:10px}
+.t-layout footer hr{margin-bottom:10px}
+
+.page-key-password:-webkit-autofill,
+.page-key-password{
+	margin:6px 0;
+	background:transparent;
+	border:0;
+	border-bottom:1px solid #0009;
+	padding:4px;
+	margin-right:10px;
+	}
+.page-key-password:-webkit-autofill:focus,
+.page-key-password:focus{outline:none;border-bottom-color:#1976d2;color:#1976d2;caret-color:#1976d2;-webkit-text-fill-color:#1976d2}
+
+.t-card{
+	background:#fff;
+	border-radius:4px;
+	box-shadow:0 0 10px #3333;
+	padding:1em;
+	width:250px;
+	margin:20% auto;
+	}
+._error .t-card{padding:2em 3em}
+._error .t-card ._actions{margin-left:0;margin-right:0;margin-bottom:0}
+.t-keyDialog {padding-left:3em}
+.t-page ._actions{margin-left:0;margin-right:0}
+.t-notLoaded button._a{display: inline-block;padding: 2px 5px}
+.t-caps {text-transform:capitalize}
+.t-reload{float:right}
+.t-reload ._a{color:#999;text-decoration:none}
+.t-credit {color:#999}
+.t-user-moneys .t-item{margin:2px 0}
+.t-label{display:inline-block;float:left}
+.t-value{display:inline-block;text-align:right;font-weight:bold}
+.t-user-bars .t-label{width:50px}
+.t-user-bars .t-value{width:150px}
+.t-user-moneys .t-label{width:100px}
+.t-user-moneys .t-value{width:100px}
+.t-noty button{border:1px solid #ccc;border-radius:4px;background:none;padding: 2px 4px;}
+</style></head><body class="t-scrollbar"><noscript class="_view _error"><div class="_layout _fadein"><div class="_message _tag"><b>Javascript were blocked</b><br>Please allow javascript to continue</div></div></noscript><div class="_view _error" id="_error" hidden><div class="_layout _fadein"><div class="_message _tag"><b>Error occured</b><br>See console for details</div></div></div><div class="_view _spin" id="_spin" hidden><div class="_spinner"></div><div class="_layout _fadein _delay-2"><div class="_message"><b>Loading...</b><br>Please wait.</div></div></div><div class="_view" id="_view" hidden><div class="t-layout"><div class="v-app" id="v-app"><div class="v-state" v-if="stateIs('keyDialog')"><section class="t-card _fadein t-keyDialog"><div><p><br><strong>You need a key to access Tornbase.</strong></p></div><div><input class="page-key-password" id="page-key-password" type="text" name="key" placeholder="API Key" spellcheck="false"><button xs4 small color="primary" @click="keyDialog_submitKey('page-key-password')">Enter</button></div><div><p><br>Don't have the key? Get it <a href='//www.torn.com/preferences.php#tab=api' target='_blank'>here</a>.<br><br></p></div></section></div><div class="v-state _error" v-else-if="stateIs('invalidKey')"><section class="t-card _fadein"><div class="_message _tag"><b>Wrong key</b></div><div class="_actions"><a class="_a" @click="restart()">Try again</a></div></section></div><div class="v-state" v-else><nav class="_main-menu _fadein"><b><button class="_a" @click="restart()">Exit</button> <button class="_a" @click="href('//torn.com','_blank')" title="Go to Torn City">Torn City</button></b><hr></nav><main><article><div class="v-state _fadein" v-if="stateIs('index')"><div class="t-page" v-if=" db " :key=" db_timestamp "><section class="t-user-noty"><div class="_" v-if=" db.user_noty "><div class="_error" v-if=" db.user_noty.error "><div class="_message _tag"><span v-html=" getErrorMessage('T-11',db.user_noty.error) "> </span><button class="_a" @click="loadData('user_noty')">Reload</button></div></div><div class="_" v-else><div class="t-reload"><button class="_a" @click="loadData('user_noty')">Reload</button></div><div class="t-noty"><p v-html=" getNotification(db.user_noty) "></p></div></div></div><div class="t-notLoaded" v-else><p><button class="_a" @click="loadData('user_noty')">Show Notification</button></p></div></section><hr><section class="t-user"><div class="_" v-if=" db.user "><div class="_error" v-if=" db.user.error "><div class="_message _tag"><span v-html=" getErrorMessage('T-12',db.user.error) "> </span><button class="_a" @click="loadData('user')">Reload</button></div></div><div class="_" v-else><div class="t-reload"><button class="_a" @click="loadData('user')">Reload</button></div><div class="_"><p><strong>{{ db.user.name }} </strong>[ <button class="_a" @click="href('//torn.com/profiles.php?XID=' + db.user.player_id,'_blank')">{{ db.user.player_id }}</button> ] <span class="page-user-donator" v-if="db.user.donator">[DONATOR]</span></p></div><div class="_"><hr><p>{{ db.user.gender }} {{ db.user.role }}, age {{ db.user.age }}.<br><span class="t-caps">{{ db.user.rank }} [ Level {{ db.user.level }} ]</span><br>Lives in a {{ db.user.property }} [ <button class="_a" @click="href('//torn.com/properties.php#/ID=' + db.user.property_id,'_blank')">{{ db.user.property_id }}</button> ]<br><span>Has {{ db.user.awards }} awards.</span></p></div><hr><p class="_" v-if=" db.user.status ">Currently {{ db.user.status[0] }} <span class="_" v-if=" db.user.states "><span class="page-user-hospital" v-if=" db.user.states.hospital_timestamp " :title=" db.user.states.hospital_timestamp ">[ Hospitalized ]</span><span class="page-user-jail" v-if=" db.user.states.jail_timestamp " :title=" db.user.states.jail_timestamp ">[ Jailed ]</span></span><br>Last active <span :title=" db.user.last_action.timestamp ">{{ db.user.last_action.relative }}</span></p></div></div><div class="t-notLoaded" v-else><p><button class="_a" @click="loadData('user')">Show Profile</button></p></div></section><hr><section><div class="_" v-if=" db.user_bars "><div class="_error" v-if=" db.user_bars.error "><div class="_message _tag"><span v-html=" getErrorMessage('T-13',db.user_bars.error) "> </span><button class="_a" @click="loadData('user_bars')">Reload</button></div></div><div class="_" v-else><div class="t-reload"><button class="_a" @click="loadData('user_bars')">Reload</button></div><div class="t-user-bars"><p><span class="t-label">Life: </span><span class="t-value">{{ db.user_bars.life.current }} / {{ db.user_bars.life.maximum }}  [ + {{ db.user_bars.life.increment }} ]</span></p><p><span class="t-label">Energy: </span><span class="t-value">{{ db.user_bars.energy.current }} / {{ db.user_bars.energy.maximum }}  [ + {{ db.user_bars.energy.increment }} ]</span></p><p><span class="t-label">Nerve: </span><span class="t-value">{{ db.user_bars.nerve.current }} / {{ db.user_bars.nerve.maximum }}  [ + {{ db.user_bars.nerve.increment }} ]</span></p><p><span class="t-label">Happy: </span><span class="t-value">{{ db.user_bars.happy.current }} / {{ db.user_bars.happy.maximum }}  [ + {{ db.user_bars.happy.increment }} ]</span></p><p><span class="t-label">Chain: </span><span class="t-value">{{ db.user_bars.chain.current }} / {{ db.user_bars.chain.maximum }}  [ &times; {{ db.user_bars.chain.modifier }} ]</span></p></div></div></div><div class="t-notLoaded" v-else><div class="t-user-bars" v-if=" db.user "><div class="_" v-if=" db.user.life "><p><span class="t-label">Life: </span><span class="t-value">{{ db.user.life.current }} / {{ db.user.life.maximum }}  [ + {{ db.user.life.increment }} ]</span></p><hr></div></div><p><button class="_a" @click="loadData('user_bars')">Show Status</button></p></div></section><hr><section class="t-user-moneys"><div class="_" v-if=" db.user_money "><div class="_error" v-if=" db.user_money.error "><div class="_message _tag"><span v-html=" getErrorMessage('T-14',db.user_money.error) "> </span><button class="_a" @click="loadData('user_money')">Reload</button></div></div><div class="_" v-else><div class="t-reload"><button class="_a" @click="loadData('user_money')">Reload</button></div><div class="_"><div class="t-item"><span class="t-label">Cash:</span><span class="t-value">${{ formatCurrency(db.user_money.money_onhand) }}</span></div><div class="t-item"><span class="t-label">Vault:</span><span class="t-value">${{ formatCurrency(db.user_money.vault_amount) }}</span></div><div class="t-item" v-if=" db.user_money.city_bank "><span class="t-label">City Bank:</span><span class="t-value">${{ formatCurrency(db.user_money.city_bank.amount) }}</span></div><div class="t-item"><span class="t-label">Cayman Bank:</span><span class="t-value">${{ formatCurrency(db.user_money.cayman_bank) }}</span></div><div class="t-item"><span class="t-label">Networth:</span><span class="t-value">${{ formatCurrency(db.user_money.networth) }}</span></div><div class="t-item"><span class="t-label">Points:</span><span class="t-value">{{ formatCurrency(db.user_money.points) }}</span></div></div></div></div><div class="t-notLoaded" v-else><p><button class="_a" @click="loadData('user_money')">Show Money</button></p></div></section></div><div class="t-page" v-else><section class="_spin"><div class="_spinner"></div><div class="_fadein _delay-2"><div class="_message"><b>Loading...</b><br>Please wait.</div></div></section></div></div><div class="v-state _fadein" v-if="stateIs('test')"><div class="t-page"><section><h3 class="_h5">Testing</h3></section><section class="_actions"><a class="_a" @click="useState('index')">Return Home</a></section></div></div></article></main><footer class="_fadein"></footer><hr><p class="t-credit">&copy; Copyright</p></div></div></div></div><script src="/a-first/js/base.js"></script><script async src="/a-first/js/load.js"></script><script async src="/tornbase/js/tornbase-app.js"></script></body></html>

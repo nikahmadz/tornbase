@@ -1,4 +1,4 @@
-// 404.pug, compress:true, out: ../../404.html
+// 404.pug, compress:true, out: ../../public/404.html
 
 doctype html
 
@@ -27,9 +27,6 @@ html#page-404.page-404(lang="en")
 		._view._error
 			._layout
 
-				// nav
-				include pugs/nav.pug
-
 				main._fadein
 					article
 
@@ -38,14 +35,10 @@ html#page-404.page-404(lang="en")
 								b 404
 								|  | Page not found
 						section._actions
-							a(href='./') Return Home
+							a(href='/') Return Home
 
 					//-article
 				//-main
-				
-				footer
-				//-footer
-				
 			//-layout
 		//-view
 	//-body

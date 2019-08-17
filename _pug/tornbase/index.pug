@@ -196,12 +196,12 @@ html#page-index.page-index(lang="en")
 		//-view
 
 		// core scripts execute first
-		script(src='/a-first/js/base.js')
+		script(src='/_lib/base/js/base.js')
 		//- all core scripts must be embeded inline
 			script#_base: include ../../a-first/js/base.js
 
 		// async scripts execute when loaded
-		script(async src='/a-first/js/load.js')
+		script(async src='/_lib/base/js/load.js')
 		script(async src='/tornbase/js/tornbase-app.js')
 		//-script
 

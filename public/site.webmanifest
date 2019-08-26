@@ -1,7 +1,6 @@
 {
 "short_name":"Tornbase",
 "name": "Tornbase",
-"start_url":,"https://tornbase-dev.web.app"
 "display": "standalone",
 "theme_color":"#eee",
 "background_color":"#eee",

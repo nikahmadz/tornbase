@@ -1,0 +1,29 @@
+// main: ../index.pug
+
+section(:key="user_notifications")
+	._p._tag._text-grey(v-if="user_notifications==(void 0)")
+		i.material-icons._spin sync
+		|
+		| Loading...
+	._p.t-noty(v-else-if="db.user_notifications && db.user_notifications.notifications")
+		button.ir(@click="href('https://www.torn.com/messages.php','_blank')"
+			title="New Messages")
+			i.material-icons email
+			b {{db.user_notifications.notifications.messages}}
+		button.ir(@click="href('https://www.torn.com/events.php','_blank')"
+			title="New Events")
+			i.material-icons error
+			b {{db.user_notifications.notifications.events}}
+		button.ir(@click="href('https://www.torn.com/awards.php','_blank')"
+			title="New Awards")
+			i.material-icons stars
+			b {{db.user_notifications.notifications.awards}}
+		button.ir(@click="href('https://www.torn.com/calendar.php','_blank')"
+			title="New Competition Alert")
+			i.material-icons event
+			b {{db.user_notifications.notifications.competition}}
+	._p._tag-red(v-else-if="db.user_notifications && db.user_notifications.error")
+		span._text-grey(v-html="getErrorMessage('T-UN',db.user_notifications.error)")
+		button._a(@click="sync([['user','notifications']])") Reload
+	._p._tag._text-grey(v-else v-html="getErrorMessage('T-UN')")
+//-

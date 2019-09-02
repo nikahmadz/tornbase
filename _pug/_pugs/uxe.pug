@@ -1,0 +1,24 @@
+noscript
+	._view._error._fadein
+		._layout
+			._tag-red._text-grey
+				b Javascript were blocked
+				br
+				| Please allow javascript to continue
+
+#_error._view._error._fadein(hidden)
+	._layout
+		._tag-red._text-grey
+			b Error occured
+			br
+			| See console for details
+		._actions
+			a._a(onclick="window.location.reload(true)") Reload this page
+
+#_spin._view._spin._fadein(hidden)
+	._spinner
+	._layout
+		._text-grey
+			b Loading...
+			br
+			| Please wait.

@@ -1,5 +1,163 @@
 /* theme styles - (c) Copyright Tornbase by Nik Ahmad 2019 */
 
+._rotate-180{transform:rotate(180deg)}
+
+@keyframes __spin {
+  0% {transform:rotate(0deg)}
+  100% {transform:rotate(359deg)}
+  }
+._spin{
+  animation:__spin 1000ms infinite linear;
+  }
+
+._caps {text-transform:capitalize}
+
+._no-outline{outline:none}
+
+input:-webkit-autofill{-webkit-transition-delay:9999s}
+
+.t-card{
+  background:#fff;
+  border-radius:4px;
+  box-shadow:0 0 0 1px #bbb,0 0 10px #3333;
+  padding:1em;
+  }
+
+.t-noty button{
+  background: none;
+  border: none;
+  box-shadow: none;
+  margin-right:17px;
+  margin-left:-8px;
+  }
+
+.menu-page,
+.invalidKey,
+.keyDialog{
+  margin:3% auto;
+}
+.menu-page,
+.invalidKey,
+.keyDialog{
+  margin:10vh auto;
+  width:225px;
+  padding:2em 50px;
+  }
+.invalidKey .message{
+  margin:0 -2em;
+  }
+
+.page-key-password:-webkit-autofill,
+.page-key-password{
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #888;
+  box-shadow: none;
+  margin-right: 10px;
+  }
+.page-key-password:-webkit-autofill:focus,
+.page-key-password:focus{
+  border-bottom-color:#1976d2;
+  caret-color:#1976d2;
+  color:#1976d2;
+  outline:none;
+  -webkit-text-fill-color:#1976d2;
+  }
+
+button.ir,
+button.il,
+button.i{
+  min-height:25px;
+  padding-left:16px;
+  position:relative;
+  vertical-align:top;
+  }
+button.ir{padding-left:8px;padding-right:16px}
+button.ir i,
+button.il i,
+button.i i{
+  font-size:22px;
+  left:2px;
+  line-height:100%;
+  position:absolute;
+  top:1px;
+  }
+button.ir i{left:auto;right:1px}
+button.il{padding-left:32px}
+button.ir{padding-right:32px}
+button.il i{left:5px}
+button.ir i{left:auto;right:5px}
+
+.menu-bar{
+  background: rgb(47,46,43);
+  background: linear-gradient(145deg, rgba(60,60,60,1) 10%, rgba(70,70,70,1) 50%, rgba(60,60,60,1) 90%);
+  box-shadow:0 1px #eee,0 0 10px #999;
+  color:#bbb;
+  padding:1px;
+  text-shadow:1px 1px 1px #000;
+  }
+.menu-bar button{color:inherit}
+
+.menu-bar button.il i,
+.menu-bar button.i i{
+  font-size:24px;
+  text-shadow:1px 1px #000;
+  }
+
+.menu-bar button.il,
+.menu-bar button.i{
+  background:none;
+  border:none;
+  box-shadow:none;
+  height:32px;
+  padding-left:32px;
+  }
+.menu-bar button.il i,
+.menu-bar button.i i{top:3px}
+.menu-bar button.i i{left:9px}
+
+.menu-page{text-align:center}
+
+.t-status-icon{
+display: block;
+float: left;
+font-size: 2em;
+margin-right: 10px;
+}
+
+.t-user-moneys .t-item{margin:2px 0}
+.t-label{display:inline-block}
+.t-value{display:inline-block;font-weight:bold;text-align:right}
+
+.t-user-bars .t-label{width:50px}
+.t-user-bars .t-value{width:150px}
+.t-user-moneys .t-label{width:100px}
+.t-user-moneys .t-value{width:100px}
+
+.t-bar{
+background:#ccc;
+height:8px;
+margin:2px 0;
+width:200px;
+}
+.t-bar-value{
+background:#aaa;
+height:100%;
+transition:1s width;
+width:0;
+}
+
+.t-bar-life{background:#cdf}
+.t-bar-life .t-bar-value{background:#49d}
+
+.t-bar-energy{background:#bdb}
+.t-bar-energy .t-bar-value{background:#5b2}
+
+.t-bar-nerve{background:#ecc}
+.t-bar-nerve .t-bar-value{background:#d44}
+
+.t-bar-happy{background:#ed9}
+.t-bar-happy .t-bar-value{background:#db3}
 
 
 /* */

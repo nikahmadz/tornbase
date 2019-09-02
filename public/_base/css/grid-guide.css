@@ -1,0 +1,7 @@
+/* (c) Copyright HtmlBase by Nik Ahmad 2019 */
+
+._grid-ruler{background-image:url('/_base/img/guide.png');height:100px}
+._grid-ruler.-hide{height:0}
+._grid-ruler.-show{height:100px}
+
+@media screen and (min-width:200px){}

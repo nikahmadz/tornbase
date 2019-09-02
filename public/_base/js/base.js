@@ -80,26 +80,24 @@ dom=function(x,m){
   }
   return e
 },
-sa=function(e,a,v){e.setAttribute(a,v)},
+sa=function(e,a,v){e.setAttribute(a,v||'')},
 ra=function(e,a){e.removeAttribute(a)},
-hide=function(e,a){sa(e,'hidden','hidden')},
+hide=function(e,a){sa(e,'hidden')},
 show=function(e,a){ra(e,'hidden')},
 i={};
 // error support
 ;(function(){
-var
-er,
-e=dom(c.errorId||'_error',false)
-;
+var er;
 const
 fn=nr(function(){
   removeEvent('error',w,fn)
   v.error=arguments[0];
+  const e=dom(c.errorId||'_error',false);
 	if(e){show(e)}
 },1)
 ;
 addEvent('error',w,fn)
-v.setErrorId=function(x){const n=dom(x);n?e=n:_}
+v.setErrorId=function(x){const n=dom(x);n?c.errorId=x:_}
 v.onError=function(c){
   if(!af(c)){throw xuse('then','function',c)}
   if(v.error){c();return}
@@ -116,26 +114,35 @@ const git=function(){return it};
 var r=false,st;
 const
 ms=o.minimumSpin||2000, // duration of css-animation
-c=dom(o.viewId||'_view',false),
-p=dom(o.spinId||'_spin',false),
 h=hide,
 s=show,
+sw=function(f){
+  const
+  c=dom(o.viewId||'_view',false),
+  p=dom(o.spinId||'_spin',false)
+  ;
+  f(c,p)
+},
 sc=function(){
   if(st==='c'){return}st='c';
-  p?h(p):_;
-  if(c){
-    v.onError(function(){h(c)})
-    s(c)
-  }
+  sw(function(c,p){
+    p?h(p):_;
+    if(c){
+      v.onError(function(){h(c)})
+      s(c)
+    }
+  })
 },
 sp=function(){
   if(st==='p'){return}st='p';
-  c?h(c):_;
-  if(p){
-    v.onError(function(){h(p)})
-    s(p)
-    it=now()+ms;
-  }
+  sw(function(c,p){
+    c?h(c):_;
+    if(p){
+      v.onError(function(){h(p)})
+      s(p)
+      it=now()+ms;
+    }
+  })
 },
 sr=function(){run(function(){r?sc():sp()},it-now())}
 ;

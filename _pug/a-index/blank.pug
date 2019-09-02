@@ -1,0 +1,79 @@
+
+doctype html
+
+include ../_pugs/copyright.pug
+
+html(lang="en")
+
+	head
+		meta(charset="utf-8")
+
+		// seo
+		title Blank | Starter Pack
+		meta(name="description" content="")
+		link(rel="canonical" href="")
+
+		meta(property="og:locale" content="en_US")
+		meta(property="og:site_name" content="Starter Pack")
+		meta(property="og:title" content="Blank | Starter Pack")
+		meta(property="og:description" content="")
+		meta(property="og:url" content="")
+
+		script(type="application/ld+json").
+			{
+			"@type":"WebSite",
+			"name":"Starter Pack",
+			"headline":"Blank | Starter Pack",
+			"description":"",
+			"url":"",
+			"author":"Anonymous",
+			"publisher":"Anonymous",
+			"image":null,
+			"sameAs":null,
+			"dateModified":null,
+			"datePublished":null,
+			"mainEntityOfPage":null,
+			"@context":"http://schema.org"
+			}
+		// end seo
+
+		// ux
+		include ../_pugs/ux.pug
+
+		// local styles
+		style(type="text/css").
+
+
+
+		//-style
+
+	//-head
+	body
+		._app
+			._view
+				._layout
+
+					main._fadein
+						article
+
+							section
+								p._text-grey
+									| Use the blank template to start a page from scratch.
+								p
+									a(href="./") Back
+
+						//-article
+					//-main
+
+				//-layout
+			//-view
+		//-app
+
+		// core scripts
+
+		// async scripts
+
+		//-script
+
+	//-body
+//-html

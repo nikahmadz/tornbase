@@ -1,0 +1,17 @@
+div
+	p
+		strong You need a key to access Tornbase.
+div
+	input#page-key-password.page-key-password(
+		type='text'
+		name='key'
+		placeholder="API Key"
+		spellcheck='false'
+		)
+	button(
+		@click="keyDialog_submitKey('page-key-password')"
+		) Enter
+div
+	p
+		br
+		| Don't have the key? Get it <a href='//www.torn.com/preferences.php#tab=api' target='_blank'>here</a>.

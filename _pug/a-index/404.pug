@@ -1,0 +1,47 @@
+// 404.pug, compress:true, out: ../../public/404.html
+
+doctype html
+
+include ../_pugs/copyright.pug
+
+html(lang="en")
+
+	head
+		meta(charset="utf-8")
+
+		// seo
+		title 404 - Page not found
+
+		// ux
+		include ../_pugs/ux.pug
+
+		// local styles
+		style(type="text/css").
+
+
+
+		//-style
+
+	//-head
+	body
+		._app
+			._view
+				._layout
+					main._fadein
+						article
+
+							section._tag-red._text-grey
+								b 404
+								|
+								| | Page not found
+
+							section._actions
+								a(href='./') Return Home
+
+						//-artilce
+					//-state
+				//-layout
+			//-view
+		//-app
+	//-body
+//-html

@@ -1,0 +1,48 @@
+// main: ../index.pug
+
+nav.menu-bar
+	b
+		button.i(
+			@click="state='menu'"
+			title="Menu"
+			)
+			i.material-icons menu
+		button.il(
+			@click="href('//torn.com','_blank')"
+			title="Go to Torn City"
+			)
+			i.material-icons location_city
+			b Torn City
+		button.i(
+			@click="href('//torn.com/gym.php','_blank')"
+			title="Go to Gym"
+			)
+			i.material-icons fitness_center
+		button.i(
+			@click="href('//torn.com/crimes.php','_blank')"
+			title="Commit Crimes"
+			)
+			i.material-icons fingerprint
+		button.i(
+			@click="href('//torn.com/shops.php','_blank')"
+			title="Go Shopping"
+			)
+			i.material-icons store
+		button.i(
+			@click="href('//torn.com/imarket.php','_blank')"
+			title="Go to Item Market"
+			)
+			i.material-icons shopping_cart
+		button.i(
+			@click="href('//torn.com/casino.php','_blank')"
+			title="Go to Casino"
+			)
+			i.material-icons casino
+		button.i(
+			@click="sync([['user'],['user','notifications']])"
+			:class="{'_no-outline':isLoading}"
+			title="Sync Data"
+			)
+			i.material-icons(:class="{_spin:isLoading}") sync
+			
+//-nav

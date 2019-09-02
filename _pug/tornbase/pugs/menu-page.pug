@@ -1,0 +1,26 @@
+nav.menu
+	p
+		b._text-grey Tornbase Menu
+		hr
+	p
+		button.il(
+			@click=" state='home' "
+			title="Back to Tornbase"
+			)
+			i.material-icons home_work
+			b Tornbase
+		button.il(
+			@click="href('//torn.com','_blank')"
+			title="Go to Torn City"
+			)
+			i.material-icons location_city
+			b Torn City
+	p
+		hr
+	p
+		button.il(
+			@click="restart()"
+			title="Log out"
+			)
+			i.material-icons._rotate-180 exit_to_app
+			span Log out of Tornbase

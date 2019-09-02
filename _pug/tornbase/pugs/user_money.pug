@@ -5,6 +5,9 @@
 		i.material-icons._spin sync
 		|
 		| Loading...
+	._p._tag-red._text-grey(v-else-if=" db.user_money && db.user_money.error ")
+		span(v-html=" getErrorMessage('T-U',db.user_money.error) ") 
+		button._a(@click="sync([['user','money']])") Reload
 	._p(v-else-if=" db.user_money ")
 		.t-item
 			span.t-label Cash:
@@ -24,8 +27,5 @@
 		.t-item
 			span.t-label Points:
 			span.t-value {{ formatCurrency(db.user_money.points) }}
-	._p._tag-red._text-grey(v-else-if=" db.user_money && db.user_money.error ")
-		span(v-html=" getErrorMessage('T-U',db.user_money.error) ") 
-		button._a(@click="sync([['user','money']])") Reload
 	._p._tag._text-grey(v-else v-html="getErrorMessage('T-UM')")
 //-user-money

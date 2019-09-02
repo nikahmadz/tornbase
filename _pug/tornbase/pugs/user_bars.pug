@@ -5,6 +5,9 @@ section(:key="user_bars")
 		i.material-icons._spin sync
 		|
 		| Loading...
+	._p._tag-red(v-else-if="db.user_bars && db.user_bars.error")
+		span._text-grey(v-html="getErrorMessage('T-UB',db.user_bars.error)")
+		button._a(@click="sync([['user','bars']])") Reload
 	.t-user-bars(v-else-if="db.user_bars")
 		._p
 			span.t-label Life:
@@ -30,9 +33,6 @@ section(:key="user_bars")
 		._p
 			span.t-label Life:
 			span.t-value {{ db.user.life.current }} / {{ db.user.life.maximum }}  [ + {{ db.user.life.increment }} ]
-	._p._tag-red(v-else-if="db.user_bars && db.user_bars.error")
-		span._text-grey(v-html="getErrorMessage('T-UB',db.user_bars.error)")
-		button._a(@click="sync([['user','bars']])") Reload
 	._p._tag._text-grey(v-else v-html="getErrorMessage('T-UB')")
 
 //-user_bars

@@ -5,6 +5,9 @@ section(:key="user")
 		i.material-icons._spin sync
 		|
 		| Loading...
+	._p._tag-red._text-grey(v-else-if=" db.user && db.user.error ")
+		span(v-html=" getErrorMessage('T-U',db.user.error) ") 
+		button._a(@click="sync([['user']])") Reload
 	._(v-else-if="db.user")
 		._p
 			strong {{ db.user.name }}
@@ -54,12 +57,9 @@ section(:key="user")
 			| Lives in a <b>{{ db.user.property }}</b> [
 			|
 			button._a(
-				@click="href('//torn.com/properties.php#/ID=' + db.user.property_id,'_blank')"
+				@click="href('//torn.com/properties.php#/p=propertyinfo&ID='+ db.user.property_id +'&userID='+ db.user.player_id,'_blank')"
 				) {{ db.user.property_id }}
 			|
 			| ]
-	._p._tag-red._text-grey(v-else-if=" db.user && db.user.error ")
-		span(v-html=" getErrorMessage('T-U',db.user.error) ") 
-		button._a(@click="sync([['user']])") Reload
 	._p._tag._text-grey(v-else v-html="getErrorMessage('T-U')")
 //-

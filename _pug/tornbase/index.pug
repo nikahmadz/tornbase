@@ -65,7 +65,14 @@ html#page-index.page-index(lang="en")
 			#_view._view(hidden)
 				._
 
-					.state(v-if=" state=='home' ")
+					.state(v-if=" db.user && db.user.error ")
+						aside._fadein.t-dialog.t-card.invalidKey
+							p.message._tag-red._text-grey
+								span(v-html=" getErrorMessage('T-E',db.user.error) ") 
+							p.actions
+								a._a(@click="restart()") Try again
+
+					.state(v-else-if=" state=='home' ")
 						._grid-box._fadein
 							include pugs/menu-bar.pug
 							main
@@ -95,17 +102,17 @@ html#page-index.page-index(lang="en")
 							//-footer
 						//-grid
 					//-home
-					.state(v-if=" state=='menu' ")
+					.state(v-else-if=" state=='menu' ")
 						aside._fadein.t-dialog.t-card.menu-page
 							include pugs/menu-page.pug
 					//-menu
-					.state(v-if=" state=='keyDialog' ")
+					.state(v-else-if=" state=='keyDialog' ")
 						aside._fadein.t-dialog.t-card.keyDialog
 							include pugs/key-dialog.pug
 						//-card
 					//-keyDialog
 
-					.state(v-if=" state=='invalidKey' ")
+					.state(v-else-if=" state=='invalidKey' ")
 						aside._fadein.t-dialog.t-card.invalidKey
 							p.message._tag-red
 								b Wrong key
@@ -113,6 +120,13 @@ html#page-index.page-index(lang="en")
 								a._a(@click="restart()") Try again
 						//-card
 					//-invalidKey
+
+					.state(v-else)
+						aside._fadein.t-dialog.t-card.invalidKey
+							p.message._tag-red
+								span(v-html=" getErrorMessage('T-E',{code:'900',error:'Logic error'}) ") 
+							p.actions
+								a._a(@click="restart()") Try again
 
 				//-layout
 			//-view

@@ -65,20 +65,14 @@ html#page-index.page-index(lang="en")
 			#_view._view(hidden)
 				._
 
-					.state(v-if=" db.user && db.user.error ")
-						aside._fadein.t-dialog.t-card.invalidKey
-							p.message._tag-red._text-grey
-								span(v-html=" getErrorMessage('T-E',db.user.error) ") 
-							p.actions
-								a._a(@click="restart()") Try again
+					.state(v-if=" state=='home' ")
 
-					.state(v-else-if=" state=='home' ")
 						._grid-box._fadein
 							include pugs/menu-bar.pug
 							main
 								article
 
-									._row
+									._row(v-else)
 										._col.mf40.bf20
 											include pugs/user_notifications.pug
 											hr

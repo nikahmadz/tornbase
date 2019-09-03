@@ -119,7 +119,7 @@ s=show,
 sw=function(f){
   const
   c=dom(o.viewId||'_view',false),
-  p=dom(o.spinId||'_spin',false)
+  p=dom(o.spinId||'_loader',false)
   ;
   f(c,p)
 },

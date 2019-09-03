@@ -32,7 +32,7 @@ section(:key="user")
 			|
 			| [ Level {{ db.user.level }} ]
 		.t-status-icon
-			i.material-icons {{ getStatusIcon() }}
+			i.material-icons {{ statusIcon }}
 		._p(v-if=" db.user.status ") Currently {{ db.user.status[0] }} 
 			span(
 				v-if=" db.user.states && db.user.states.hospital_timestamp "

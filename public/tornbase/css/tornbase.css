@@ -7,7 +7,7 @@
   100% {transform:rotate(359deg)}
   }
 ._spin{
-  animation:__spin 1000ms infinite linear;
+  animation:__spin 1s infinite linear;
   }
 
 ._caps {text-transform:capitalize}
@@ -32,19 +32,19 @@ input:-webkit-autofill{-webkit-transition-delay:9999s}
   }
 
 .menu-page,
-.invalidKey,
+.errorCard,
 .keyDialog{
   margin:3% auto;
 }
 .menu-page,
-.invalidKey,
+.errorCard,
 .keyDialog{
   margin:10vh auto;
   width:225px;
   padding:2em 50px;
   }
-.invalidKey .message{
-  margin:0 -2em;
+.errorCard .message{
+  margin:0.7em -2em;
   }
 
 .page-key-password:-webkit-autofill,

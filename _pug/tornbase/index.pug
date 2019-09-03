@@ -95,6 +95,7 @@ html#page-index.page-index(lang="en")
 									._p &nbsp;
 							//-footer
 						//-grid
+
 					//-home
 					.state(v-else-if=" state=='menu' ")
 						aside._fadein.t-dialog.t-card.menu-page
@@ -105,22 +106,21 @@ html#page-index.page-index(lang="en")
 							include pugs/key-dialog.pug
 						//-card
 					//-keyDialog
-
-					.state(v-else-if=" state=='invalidKey' ")
-						aside._fadein.t-dialog.t-card.invalidKey
-							p.message._tag-red
-								b Wrong key
-							p.actions
-								a._a(@click="restart()") Try again
-						//-card
-					//-invalidKey
-
+					.state(v-else-if=" isLoading ")
+						aside._fadein
+							p.message._tag
+								i.material-icons._spin sync
+								|
+								|
+								span._text-grey Loading...
+					//-loading
 					.state(v-else)
-						aside._fadein.t-dialog.t-card.invalidKey
+						aside._fadein.t-dialog.t-card.errorCard
 							p.message._tag-red
-								span(v-html=" getErrorMessage('T-E',{code:'900',error:'Logic error'}) ") 
+								span._text-grey(v-html=" getErrorMessage() ") 
 							p.actions
 								a._a(@click="restart()") Try again
+					//-error
 
 				//-layout
 			//-view

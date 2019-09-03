@@ -98,12 +98,20 @@ button.ir i{left:auto;right:5px}
   }
 .menu-bar button{color:inherit}
 
+.menu-buttons button.il i,
+.menu-buttons button.i i,
 .menu-bar button.il i,
 .menu-bar button.i i{
   font-size:24px;
+  top:3px;
+  }
+.menu-bar button.il i,
+.menu-bar button.i i{
   text-shadow:1px 1px #000;
   }
 
+.menu-buttons button.il,
+.menu-buttons button.i,
 .menu-bar button.il,
 .menu-bar button.i{
   background:none;
@@ -112,8 +120,7 @@ button.ir i{left:auto;right:5px}
   height:32px;
   padding-left:32px;
   }
-.menu-bar button.il i,
-.menu-bar button.i i{top:3px}
+.menu-buttons button.i i,
 .menu-bar button.i i{left:9px}
 
 .menu-page{text-align:center}

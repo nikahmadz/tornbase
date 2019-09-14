@@ -82,6 +82,34 @@
 .mf100{width:100%}
 
 }
+@media screen and (min-width:900px){
+._firm{width:900px}
+
+.mlf12{width:8.3333%}
+.mlf12-2{width:16.6667%}
+.mlf12-3{width:25%}
+.mlf12-4{width:33.3333%}
+.mlf12-5{width:41.6667%}
+.mlf12-6{width:50%}
+.mlf12-7{width:58.3333%}
+.mlf12-8{width:66.6667%}
+.mlf12-9{width:75%}
+.mlf12-10{width:83.3333%}
+.mlf12-11{width:91.6667%}
+
+.mlf10{width:10%}
+.mlf20{width:20%}
+.mlf30{width:30%}
+.mlf40{width:40%}
+.mlf50{width:50%}
+.mlf60{width:60%}
+.mlf70{width:70%}
+.mlf80{width:80%}
+.mlf90{width:90%}
+
+.mlf100{width:100%}
+
+}
 @media screen and (min-width:1200px){
 ._firm{width:1200px}
 

@@ -15,7 +15,9 @@ af=function(_){return ac(_,fn)},
 ao=function(_){return ac(_,{})},
 avo=function(_){return ao(_)&&_!==null},
 as=function(_){return ac(_,'')},
-avs=function(_){return as(_)&&_.length>0},
+an=function(_){return ac(_,0)},
+avr=function(n,ge,le){if(!an(n)){return}return n>=(ge||1)&&(le?(n<=le):true)},
+avs=function(_,ge,le){if(!as(_)){return}const n=_.trim().length;return avr(n,ge,le)},
 sb=function(_){return "["+_+"]"},
 sq=function(_){return "'"+_+"'"},
 xuse=function(f,v,x){return 'Invalid argument for '+sb(f)+', cannot use '+sb(v)+': '+sq(x)},
@@ -160,37 +162,37 @@ run(wo,bt(bs+fw))
 addEvent('load',w,wo)
 }(c));//base init
 // base interface
-i.verifyConfig=function(name,config){vc(name,config)}
-i.use=function(f){f(fn,_,w,wc,g,d,a,ac,af,ao,avo,as,avs,xuse)}
 i.getOption=function(){return c}
-i.newRoutine=function(f,count){return nr(f,count)}
-i.run=function(f,delay){run(f,delay);return i}
+i.verifyConfig=function(name,config){vc.apply(this,arguments)}
+i.use=function(f){f(fn,_,w,wc,g,d,a,ac,af,ao,avo,an,avr,as,avs,xuse)}
 i.useDom=function(f){f(dom,hide,show)}
+i.newRoutine=function(f,count){return nr.apply(this,arguments)}
+i.run=function(f,delay){run.apply(this,arguments);return i}
 i.getElementById=function(selector){return dom(selector)}
 i.show=function(element){show(element);return i}
 i.hide=function(element){hide(element);return i}
-i.addEvent=function(event_name,dom,f){addEvent(event_name,dom,f);return i}
-i.removeEvent=function(event_name,dom,f){removeEvent(event_name,dom,f);return i}
+i.addEvent=function(event_name,dom,f){addEvent.apply(this,arguments);return i}
+i.removeEvent=function(event_name,dom,f){removeEvent.apply(this,arguments);return i}
 i.setErrorId=function(errorId){v.setErrorId(errorId);return i}
 i.onError=function(f){v.onError(f);return i}
-i.setError=function(error){v.setError(error);return i}
+i.setError=function(){v.setError.apply(this,arguments);return i}
 i.getError=function(){return v.error}
 i.showLoading=function(){v.showLoading();return i}
 i.showContent=function(){v.showContent();return i}
 i.getIdle=function(){return git()}
 const
-exp=function(o,c,n){
+exp=function(v,c,n){
   if(!avs(n)){wc.warn(xuse('export','name',n));return}
-  if(!(ao(o)||af(o))){throw xuse('export','method',o)}
+  if(!(ao(v)||af(v))){throw xuse('export','value',v)}
   if(!ao(c)){throw xuse('export','context',c)}
-  const oo=(c[n]!==_)?c[n]:_;
-  if(oo){wc.warn('Overwriting '+sb(n))}
-  c[n]=o;
-  return oo
+  const val=(c[n]!==_)?c[n]:_;
+  if(val){wc.warn('Overwriting '+sb(n))}
+  c[n]=v;
+  return val
 }
 ;
 // to export methods into context
-i.export=function(method,context,name){exp(method,context,name);return i}
+i.export=function(value,context,name){exp(value,context,name);return i}
 i.conflict=exp(i,c.context,c.name||dn)
 }({// base config
 

@@ -1,65 +1,69 @@
 // main: ../index.pug
 
-section(:key="user")
-	._p._tag._text-grey(v-if="user==(void 0)")
+section.t-user-profile
+	._fadein._p._tag._text-grey(v-if=" spinLoader ")
 		i.material-icons._spin sync
-		|
+		!=' '
 		| Loading...
-	._p._tag-red._text-grey(v-else-if=" db.user && db.user.error ")
-		span(v-html=" getErrorMessage('T-U',db.user.error) ") 
-		button._a(@click="sync([['user']])") Reload
-	._(v-else-if="db.user")
+	._fadein(v-else-if="data.user")
 		._p
-			strong {{ db.user.name }}
-			|
-			| [
-			|
+			strong {{ data.user.name }}
+			!=' [ '
 			button._a(
-				@click="href('//torn.com/profiles.php?XID=' + db.user.player_id,'_blank')"
-				) {{ db.user.player_id }}
-			|
-			| ]
-			|
-			|
-			i.material-icons(v-if="db.user.donator" title="Donator") star
+				@click="openUrl('//torn.com/profiles.php?XID=' + data.user.player_id,'_blank')"
+				title="Go to your profile"
+				) {{ data.user.player_id }}
+			!=' ] '
+			.__.star(v-if="data.user.donator" title="Donator")
+				i.material-icons local_play
 		._p
-			| {{ db.user.gender }} {{ db.user.role }}, age {{ db.user.age }}.
+			| {{ data.user.gender }} {{ data.user.role }}, age {{ data.user.age }}.
 			br
-			span Has {{ db.user.awards }} awards.
+			span Has {{ data.user.awards }} awards.
 		hr
 		._p._b
-			span._caps {{ db.user.rank }}
+			span._caps {{ data.user.rank }}
 			|
-			| [ Level {{ db.user.level }} ]
-		.t-status-icon
-			i.material-icons {{ statusIcon }}
-		._p(v-if=" db.user.status ") Currently {{ db.user.status[0] }} 
-			span(
-				v-if=" db.user.states && db.user.states.hospital_timestamp "
-				:title=" formatBackstamp(db.user.states.hospital_timestamp) "
-				) [ Hospitalized ]
-			span(
-				v-if=" db.user.states && db.user.states.jail_timestamp "
-				:title=" formatBackstamp(db.user.states.jail_timestamp) "
-				) [ Jailed ]
-			br
-			| Last active 
-			span(:title=" formatBackstamp(db.user.last_action.timestamp) ") {{ db.user.last_action.relative }}
-		._p(v-if=" db.user.basicicons && db.user.basicicons.icon35 ")
-			button.il(@click="href('https://www.torn.com/bazaar.php','_blank')"
-				title="Go to Bazaar")
+			| [ Level {{ data.user.level }} ]
+		._p.t-status
+			.t-status-icon(v-if="data.user.status")
+				i.material-icons {{ statusIcon }}
+			.t-status-message
+				._(v-if="data.user.status" v-html="'Currently '+ data.user.status.join('. ')")
+				._
+					| Last activity
+					!=' '
+					span(:title=" formatTornTimestamp(data.user.last_action.timestamp) ") {{ data.user.last_action.relative }}
+				._
+					span(
+						v-if=" data.user.states && data.user.states.hospital_timestamp "
+						:title=" formatTornTimestamp(data.user.states.hospital_timestamp) "
+						) [ Hospitalized ]
+					span(
+						v-if=" data.user.states && data.user.states.jail_timestamp "
+						:title=" formatTornTimestamp(data.user.states.jail_timestamp) "
+						) [ Jailed ]
+		._p(v-if=" data.user.basicicons && data.user.basicicons.icon35 ")
+			button.il(
+				@click="openUrl('https://www.torn.com/bazaar.php','_blank')"
+				title="Go to your bazaar"
+				)
 				i.material-icons storefront
 				b Your bazaar is open
 		hr
 		include user_money.pug
 		hr
 		._p
-			| Lives in a <b>{{ db.user.property }}</b> [
-			|
+			| Lives in a <b>{{ data.user.property }}</b>
+			!=' [ '
 			button._a(
-				@click="href('//torn.com/properties.php#/p=propertyinfo&ID='+ db.user.property_id +'&userID='+ db.user.player_id,'_blank')"
-				) {{ db.user.property_id }}
-			|
-			| ]
-	._p._tag._text-grey(v-else v-html="getErrorMessage('T-U')")
+				@click="openUrl('//torn.com/properties.php#/p=propertyinfo&ID='+ data.user.property_id +'&userID='+ data.user.player_id,'_blank')"
+				:title=" 'Go to your '+data.user.property "
+				) {{ data.user.property_id }}
+			!=' ] '
+	._fadein._p._tag._text-grey(v-else)
+			| User profile is missing.
+			!=' '
+			a._a(@click=" sync(TORN.USER) ") Try reload
+
 //-

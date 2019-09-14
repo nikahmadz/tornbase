@@ -1,22 +1,24 @@
 // main: ../index.pug
 
-nav.menu-bar
-	button.i(
-		@click="state='menu'"
-		title="Menu"
-		)
-		i.material-icons menu
-	button.il(
-		@click="href('//torn.com/','_blank')"
-		title="Go to Torn City"
-		)
-		i.material-icons location_city
-		b Torn City
-	button.i(
-		@click="sync([['user'],['user','notifications'],['user','money'],['user','bars']])"
-		:class="{'_no-outline':isLoading}"
-		title="Sync Data"
-		)
-		i.material-icons(:class="{_spin:isLoading}") sync
+
+nav.top-menu
+	.home-button
+		a._button.homeButton(
+			@click="openUrl('//torn.com/','_blank')"
+			title="Go to Torn City"
+			)
+			b.torn Base
+	.menu-bar
+		button.i(
+			@click="view='menu'"
+			title="Menu"
+			)
+			i.material-icons menu
+		button.i(
+			@click="sync(TORN.USER_ALL)"
+			:class="{'_no-focus':spinLoader}"
+			:title=" spinLoader?'Synchronizing...':'Sync Data' "
+			)
+			i.material-icons(:class="{_spin:spinLoader}") sync
 			
 //-nav

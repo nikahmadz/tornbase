@@ -1,17 +1,20 @@
-div
-	p
-		strong You need a key to access Tornbase.
+// main: ../index.pug
+
+h3._h6 You need a key to access Tornbase
 div
 	input#page-key-password.page-key-password(
+		v-model="key"
 		type='text'
 		name='key'
 		placeholder="API Key"
 		spellcheck='false'
 		)
 	button(
-		@click="keyDialog_submitKey('page-key-password')"
+		@click="keyDialog_submit()"
 		) Enter
-div
-	p
-		br
-		| Don't have the key? Get it <a href='//www.torn.com/preferences.php#tab=api' target='_blank'>here</a>.
+._p
+	br
+	| You don't have the key? Get it
+	|
+	a(href='//www.torn.com/preferences.php#tab=api' target='_blank') here
+	| .

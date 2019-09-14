@@ -1,34 +1,34 @@
 // main: ../index.pug
 
 nav.menu-buttons
-	._p
+	button.i(
+		@click="openUrl('//torn.com/gym.php','_blank')"
+		title="Go to Gym"
+		)
+		i.material-icons fitness_center
+	button.i(
+		@click="openUrl('//torn.com/crimes.php','_blank')"
+		title="Commit Crimes"
+		)
+		i.material-icons fingerprint
+	button.i(
+		@click="openUrl('//torn.com/casino.php','_blank')"
+		title="Go to Casino"
+		)
+		i.material-icons casino
+	//-
 		button.i(
-			@click="href('//torn.com/gym.php','_blank')"
-			title="Go to Gym"
-			)
-			i.material-icons fitness_center
-		button.i(
-			@click="href('//torn.com/crimes.php','_blank')"
-			title="Commit Crimes"
-			)
-			i.material-icons fingerprint
-		button.i(
-			@click="href('//torn.com/casino.php','_blank')"
-			title="Go to Casino"
-			)
-			i.material-icons casino
-		button.i(
-			@click="href('//torn.com/shops.php','_blank')"
+			@click="openUrl('//torn.com/shops.php','_blank')"
 			title="Go Shopping"
 			)
 			i.material-icons store
-		button.i(
-			@click="href('//torn.com/imarket.php','_blank')"
-			title="Go to Item Market"
-			)
-			i.material-icons shopping_cart
-		button.i(
-			@click="href('//torn.com/item.php','_blank')"
-			title="View Your Items"
-			)
-			i.material-icons kitchen
+	button.i(
+		@click="openUrl('//torn.com/imarket.php','_blank')"
+		title="Go to Item Market"
+		)
+		i.material-icons shopping_cart
+	button.i(
+		@click="openUrl('//torn.com/item.php','_blank')"
+		title="View Your Items"
+		)
+		i.material-icons kitchen

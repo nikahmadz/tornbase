@@ -1,23 +1,24 @@
+// main: ../index.pug
+
 nav.menu
-	p
-		b._text-grey Tornbase Menu
-		hr
-	p
+	h3._h6._text-grey Tornbase Menu
+	hr
+	._p
 		button.il(
-			@click=" state='home' "
+			@click=" view='home' "
 			title="Back to Tornbase"
 			)
 			i.material-icons home_work
 			b Tornbase
 		button.il(
-			@click="href('//torn.com','_blank')"
+			@click="openUrl('//torn.com','_blank')"
 			title="Go to Torn City"
 			)
 			i.material-icons location_city
 			b Torn City
-	p
+	._p
 		hr
-	p
+	._p
 		button.il(
 			@click="restart()"
 			title="Log out"

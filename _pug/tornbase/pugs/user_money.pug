@@ -1,31 +1,31 @@
 // main: user.pug
 
-.t-user-moneys(:key="user_money")
-	._p._tag._text-grey(v-if="user_money==(void 0)")
+.t-user-moneys
+	._fadein._p._tag._text-grey(v-if="data.user_money==(void 0)")
 		i.material-icons._spin sync
 		|
 		| Loading...
-	._p._tag-red._text-grey(v-else-if=" db.user_money && db.user_money.error ")
-		span(v-html=" getErrorMessage('T-U',db.user_money.error) ") 
-		button._a(@click="sync([['user','money']])") Reload
-	._p(v-else-if=" db.user_money ")
-		.t-item
-			span.t-label Cash:
-			span.t-value ${{ formatCurrency(db.user_money.money_onhand) }}
-		.t-item
-			span.t-label Vault:
-			span.t-value ${{ formatCurrency(db.user_money.vault_amount) }}
-		.t-item(v-if=" db.user_money.city_bank ")
-			span.t-label City Bank:
-			span.t-value ${{ formatCurrency(db.user_money.city_bank.amount) }}
-		.t-item
-			span.t-label Cayman Bank:
-			span.t-value ${{ formatCurrency(db.user_money.cayman_bank) }}
-		.t-item
-			span.t-label Networth:
-			span.t-value ${{ formatCurrency(db.user_money.networth) }}
-		.t-item
-			span.t-label Points:
-			span.t-value {{ formatCurrency(db.user_money.points) }}
-	._p._tag._text-grey(v-else v-html="getErrorMessage('T-UM')")
+	._fadein._p(v-else-if=" data.user_money ")
+		.-item
+			span.-label Cash:
+			span.-value ${{ formatCurrency(data.user_money.money_onhand) }}
+		.-item
+			span.-label Vault:
+			span.-value ${{ formatCurrency(data.user_money.vault_amount) }}
+		.-item(v-if=" data.user_money.city_bank ")
+			span.-label City Bank:
+			span.-value ${{ formatCurrency(data.user_money.city_bank.amount) }}
+		.-item
+			span.-label Cayman Bank:
+			span.-value ${{ formatCurrency(data.user_money.cayman_bank) }}
+		.-item
+			span.-label Networth:
+			span.-value ${{ formatCurrency(data.user_money.networth) }}
+		.-item
+			span.-label Points:
+			span.-value {{ formatCurrency(data.user_money.points) }}
+	._fadein._p._tag._text-grey(v-else)
+			| Money ledger is missing.
+			!=' '
+			a._a(@click=" sync(TORN.USER_MONEY) ") Try reload
 //-user-money

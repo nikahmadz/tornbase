@@ -77,9 +77,9 @@ button._a{background:none;border:none;font:inherit;padding:0}
 
 /* theme */
 
-._view,._app,body{background-color:#eee;font-family:sans-serif;font-size:0.9em}
+body{background-color:#eee;font-family:sans-serif;font-size:0.775em}
 
-@media screen and (min-width:769px){
+@media screen and (min-width:900px){
 ::-webkit-scrollbar{background:#eee;height:12px;width:12px}
 ::-webkit-scrollbar-corner,
 ::-webkit-resizer{
@@ -151,8 +151,8 @@ button,
 
 ._deboss,
 ._deboss-white
-{box-shadow:0 0 0 1px #888 inset,1px 1px #fff,1px 1px 2px 2px #6663 inset}
-._deboss{background:#8881}
+{box-shadow:0 0 0 1px #8883 inset,1px 1px #fffc,1px 1px 2px 2px #6666 inset}
+._deboss{background:#8883}
 ._deboss-white{background:#f8f8f8}
 input,
 select,

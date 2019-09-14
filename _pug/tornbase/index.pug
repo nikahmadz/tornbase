@@ -42,92 +42,113 @@ html#page-index.page-index(lang="en")
 		include ../_pugs/ux.pug
 
 		link(rel="stylesheet" media="all" href="/_base/css/grid.css")
-		link(rel="stylesheet" media="all" href="/_base/css/grid-guide.css")
-		link(rel="stylesheet" media="all"
-			href="https://fonts.googleapis.com/icon?family=Material+Icons")
-
+		link(rel="stylesheet" media="all" href="https://fonts.googleapis.com/icon?family=Material+Icons")
 		link(rel="stylesheet" media="all" href="/tornbase/css/tornbase.css")
+
+		// dev styles
+		link(rel="stylesheet" media="all" href="/_base/css/grid-guide.css")
+		style(type="text/css").
+		
+			.control {padding:10px}
+			.control a {padding:1px 2px}
+		
+		//-style
 
 		// local styles
 		style(type="text/css").
 
 
-		
+
 		//-style
 
 	//-head
 	body
-		#_app._app
 
-			// uxe
-			include ../_pugs/uxe.pug
+		// uxe
+		include ../_pugs/uxe.pug
 
-			#_view._view(hidden)
-				._
+		#_view._view(hidden)
+			#_app._app
 
-					.state(v-if=" state=='home' ")
+				//- // dev
+				//- include pugs/dev.pug
 
-						._grid-box._fadein
-							include pugs/menu-bar.pug
-							main
-								article
+				.view(v-if=" view=='home' ")
+					._fadein
 
-									._row
-										._col.mf40.bf20
-											include pugs/user_notifications.pug
-											hr
-											include pugs/user_bars.pug
-											hr
-										//-col
-										._col.mf60.bf60
-											include pugs/menu-buttons.pug
-											hr
-											include pugs/user.pug
-											hr
-										//-col
-										._col.mf100.bf20
-											._ &nbsp;
-										//-col
+						include pugs/menu-bar.pug
+						main
+							article._grid-box
+								
+								._row
+									._col.mf40.mlf30.bf12-3
+										section.t-noties
+											t-noties(
+												:item="item"
+												:key="item.key"
+												v-for="item in data.user_noties"
+												)
+										hr
+									._col.mf60.mlf70.bf12-9
+										include pugs/menu-buttons.pug
+										hr
+								//-row
+								._row
+									._col.mf40.mlf30.bf12-3
+										section.t-bars
+											t-bars(
+												:item="bar"
+												:key="bar.key"
+												v-for="bar in data.user_bars"
+												)
+										hr
+									._col.mf60.mlf70.bf12-9
+										include pugs/user.pug
+										hr
+								//-row
+								._row
+									._col &nbsp;
+								//-row
+							//-article
+						//-main
 
-								//-article
-							//-main
-							._p &nbsp;
-							footer._row
-								._col
-									.t-credit._text-grey &copy; Copyright
-									._p &nbsp;
-							//-footer
-						//-grid
+						._p &nbsp;
 
-					//-home
-					.state(v-else-if=" state=='menu' ")
-						aside._fadein.t-dialog.t-card.menu-page
-							include pugs/menu-page.pug
-					//-menu
-					.state(v-else-if=" state=='keyDialog' ")
-						aside._fadein.t-dialog.t-card.keyDialog
-							include pugs/key-dialog.pug
-						//-card
-					//-keyDialog
-					.state(v-else-if=" isLoading ")
-						aside._fadein
-							p.message._tag
-								i.material-icons._spin sync
-								|
-								|
-								span._text-grey Loading...
-					//-loading
-					.state(v-else)
-						aside._fadein.t-dialog.t-card.errorCard
-							p.message._tag-red
-								span._text-grey(v-html=" getErrorMessage() ") 
-							p.actions
-								a._a(@click="restart()") Try again
-					//-error
+						footer
+							.footer
+								.t-credit._text-grey &copy; Copyright
+								._p &nbsp;
+						//-footer
 
-				//-layout
-			//-view
-		//-app
+					//-grid
+				//-home
+				.view(v-else-if=" view=='menu' ")
+					aside._fadein.t-dialog.t-card.menu-page
+						include pugs/menu-page.pug
+				//-menu
+				.view(v-else-if=" view=='keyDialog' ")
+					aside._fadein.t-dialog.t-card.keyDialog
+						include pugs/key-dialog.pug
+					//-card
+				//-keyDialog
+				.view._layout(v-else-if=" view=='loading' ")
+					aside._fadein
+						._p.message._tag._text-grey
+							i.material-icons._spin sync
+							|
+							|
+							span Loading...
+				//-loading
+				.view._layout(v-else)
+					aside._fadein
+						._p.message._tag-red
+							span._text-grey(v-html=" errorMessage ") 
+						._p._actions
+							a._a(@click="tryAgain()") Try again
+				//-unknown error
+
+			//-app
+		//-view
 
 		// core scripts
 		script(src='/_base/js/base.js')
@@ -135,6 +156,7 @@ html#page-index.page-index(lang="en")
 		// async scripts
 		script(async src='/_libs/vuejs/dist/vue.js')
 		script(async src='/_libs/axios/dist/axios.min.js')
+		script(async src='/tornbase/js/mockup.js')
 		script(async src='/tornbase/js/tornbase-app.js')
 		//-script
 			script(async src='https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js')

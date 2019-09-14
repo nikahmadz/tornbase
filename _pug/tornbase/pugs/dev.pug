@@ -1,0 +1,21 @@
+// main: ../index.pug
+
+._deboss.control
+	._
+		a(href="/" :title=" window.location.protocol + '//' + window.location.host + '/' ") Reset
+		a(@click="reload()" :title=" window.location ") Reload
+		span!=' | '
+		a(@click="restart()" title="Restart app without reloading") Restart
+		!=' | '
+		a(@click="view='keyDialog'") Key
+		a(@click="view='error'") Error
+		a(@click="view='loading'") Loading
+		a(@click="view='home'") Home
+		a(@click="view='menu'") Menu
+		!=' | '
+		b!='Check: '
+		a(onclick="check()") Root
+		a(@click="check()") App
+		!=' | '
+		b!='Sync: '
+		a(@click="sync(TORN.ALL)") All

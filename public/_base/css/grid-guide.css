@@ -4,4 +4,7 @@
 ._grid-ruler.-hide{height:0}
 ._grid-ruler.-show{height:100px}
 
-@media screen and (min-width:200px){}
+@media screen and (min-width:290px){}
+@media screen and (min-width:590px){}
+@media screen and (min-width:890px){}
+@media screen and (min-width:1190px){}

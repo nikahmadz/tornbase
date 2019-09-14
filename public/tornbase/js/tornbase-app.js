@@ -398,8 +398,8 @@ newTornApp=function(){
   const
   syncTornData=function(){
     if(torn.result.user===_||torn.result.user.success===_){return}
-    check()
-    this.check()
+    // check()
+    // this.check()
 
     var qi;
     TORN.ALL.forEach(function(query){

@@ -31,10 +31,6 @@ section.t-user-profile
 			.t-status-message
 				._(v-if="data.user.status" v-html="'Currently '+ data.user.status.join('. ')")
 				._
-					| Last activity
-					!=' '
-					span(:title=" formatTornTimestamp(data.user.last_action.timestamp) ") {{ data.user.last_action.relative }}
-				._
 					span(
 						v-if=" data.user.states && data.user.states.hospital_timestamp "
 						:title=" formatTornTimestamp(data.user.states.hospital_timestamp) "
@@ -43,6 +39,10 @@ section.t-user-profile
 						v-if=" data.user.states && data.user.states.jail_timestamp "
 						:title=" formatTornTimestamp(data.user.states.jail_timestamp) "
 						) [ Jailed ]
+				._
+					| Last activity
+					!=' '
+					span(:title=" formatTornTimestamp(data.user.last_action.timestamp) ") {{ data.user.last_action.relative }}
 		._p(v-if=" data.user.basicicons && data.user.basicicons.icon35 ")
 			button.il(
 				@click="openUrl('https://www.torn.com/bazaar.php','_blank')"

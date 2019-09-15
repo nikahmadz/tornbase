@@ -223,10 +223,10 @@ width:0;
 .t-bar-happy .-bar{background:#ed9}
 .t-bar-happy .-bar-value{background:#db3}
 
-.t-user-moneys{max-width:250px}
-.t-user-moneys .-item{margin:2px 0}
-.t-user-moneys .-label{min-width:90px;width:33.3333%}
-.t-user-moneys .-value{width:66.6667%}
+.t-user-moneys{min-width:210px;max-width:240px}
+.t-user-moneys .-item{margin:0.2em 0}
+.t-user-moneys .-label{width:35%}
+.t-user-moneys .-value{width:65%}
 
 .t-user-moneys .-item:hover,
 .menu-buttons button:hover,

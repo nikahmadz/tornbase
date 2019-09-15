@@ -169,7 +169,7 @@ button,
 ._button,
 select._emboss
 {
-background:linear-gradient(to bottom, #fff 5%, #eee 50%, #ccc 95%);
+background:linear-gradient(to bottom, #fff 5%, #eee 30%, #eee 70%, #ccc 95%);
 background-color:#eee;
 border:1px solid #888;
 box-shadow:1px 1px #fff,1px 2px #fff inset,-1px -2px #ccc inset;
@@ -178,7 +178,7 @@ button:hover,
 ._button:hover,
 select._emboss:hover
 {
-background:linear-gradient(to bottom, #fff 35%, #f8f8f8 50%, #b8b8b8 85%);
+background:linear-gradient(to bottom, #fff 15%, #f8f8f8 50%, #c5c5c5 85%);
 background-color:#f8f8f8;
 }
 

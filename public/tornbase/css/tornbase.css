@@ -42,7 +42,8 @@ display:block;
 font-size:20px;
 }
 
-.homeButton .torn::selection{background:none;color:inherit}
+.top-menu .torn::selection,
+.top-menu button i::selection{background:none;color:inherit}
 
 .menu-bar{
 background: rgb(47,46,43);
@@ -55,7 +56,6 @@ text-shadow:1px 1px 1px #000;
 .menu-bar button{
 color:inherit;
 cursor:help;
-margin:0 5px;
 }
 .menu-bar button.i{
 background:none;
@@ -107,6 +107,7 @@ cursor:help;
 height:30px;
 text-align:right;
 width:25%;
+min-width: 60px;
 }
 
 .t-noties button.ir i{
@@ -191,7 +192,7 @@ button.ir i{left:auto;right:5px}
 .-label{display:inline-block}
 .-value{display:inline-block;font-weight:bold;text-align:right}
 
-.t-bars{border-bottom:1px solid transparent;margin:0 auto;max-width:200px}
+.t-bars{border-bottom:1px solid transparent}
 .t-bar{margin:1em 0}
 
 .t-bar .-label{width:30%}
@@ -222,21 +223,35 @@ width:0;
 .t-bar-happy .-bar{background:#ed9}
 .t-bar-happy .-bar-value{background:#db3}
 
-.t-user-moneys .t-item{margin:2px 0}
-.t-user-moneys .-label{width:100px}
-.t-user-moneys .-value{width:100px}
+.t-user-moneys{max-width:250px}
+.t-user-moneys .-item{margin:2px 0}
+.t-user-moneys .-label{min-width:90px;width:33.3333%}
+.t-user-moneys .-value{width:66.6667%}
+
+.t-user-moneys .-item:hover,
+.menu-buttons button:hover,
+.t-noties button:hover{
+background:#ddd;
+border-radius:4px;
+}
+
+.menu-bar button:hover{
+background:#555;
+}
 
 .star {position:relative}
 .star i{cursor:help;color:#e91;font-size:1.5em;left:0.25em;position:absolute;top:-0.25em}
 
 /*  */
 
-._grid-box{}
+._grid-box{margin:0 auto;max-width:320px}
 .menu-buttons{text-align:center}
+.t-bars{margin:0}
 
 @media screen and (min-width:600px){
-  ._grid-box{width:100%}
+  ._grid-box{margin:0;max-width:none;width:100%}
   .menu-buttons{text-align:initial}
+  .t-bars{margin:0 auto;max-width:200px}
 }
 
 /* */

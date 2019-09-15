@@ -1,11 +1,7 @@
 // main: user.pug
 
 .t-user-moneys
-	._fadein._p._tag._text-grey(v-if="data.user_money==(void 0)")
-		i.material-icons._spin sync
-		|
-		| Loading...
-	._fadein._p(v-else-if=" data.user_money ")
+	._fadein._p(v-if=" data.user_money ")
 		.-item
 			span.-label Cash:
 			span.-value ${{ formatCurrency(data.user_money.money_onhand) }}
@@ -24,8 +20,12 @@
 		.-item
 			span.-label Points:
 			span.-value {{ formatCurrency(data.user_money.points) }}
+	._fadein._p._tag._text-grey(v-else-if="data.user_money==(void 0)")
+		i.material-icons._spin sync
+		|
+		| Loading...
 	._fadein._p._tag._text-grey(v-else)
-			| Money ledger is missing.
-			!=' '
-			a._a(@click=" sync(TORN.USER_MONEY) ") Try reload
+		| Unable to count your money.
+		!=' '
+		a._a(@click=" sync(TORN.USER_MONEY) ") Try reload
 //-user-money

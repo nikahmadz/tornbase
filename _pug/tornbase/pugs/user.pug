@@ -1,11 +1,7 @@
 // main: ../index.pug
 
 section.t-user-profile
-	._fadein._p._tag._text-grey(v-if=" spinLoader ")
-		i.material-icons._spin sync
-		!=' '
-		| Loading...
-	._fadein(v-else-if="data.user")
+	._fadein(v-if="data.user")
 		._p
 			strong {{ data.user.name }}
 			!=' [ '
@@ -61,9 +57,13 @@ section.t-user-profile
 				:title=" 'Go to your '+data.user.property "
 				) {{ data.user.property_id }}
 			!=' ] '
+	._fadein._p._tag._text-grey(v-else-if=" spinLoader ")
+		i.material-icons._spin sync
+		!=' '
+		| Loading...
 	._fadein._p._tag._text-grey(v-else)
-			| User profile is missing.
-			!=' '
-			a._a(@click=" sync(TORN.USER) ") Try reload
+		| User profile is missing.
+		!=' '
+		a._a(@click=" sync(TORN.USER) ") Try reload
 
 //-
